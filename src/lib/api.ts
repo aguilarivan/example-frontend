@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL
-  ? `${process.env.NEXT_PUBLIC_API_URL}/boxes`
-  : 'http://localhost:8080/boxes'; // Fallback for local development
+const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/boxes`
+
 
 export interface Box {
   id?: number;
