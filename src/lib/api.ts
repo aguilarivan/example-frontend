@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-const API_URL = `${process.env.BACKEND_URL}:8080/boxes`
-
+const API_URL = `${process.env.BACKEND_URL}/boxes`
+console.log('API_URL:', API_URL);
+// Ensure BACKEND_URL is set in your environment variables
 
 export interface Box {
   id?: number;
