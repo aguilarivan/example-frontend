@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const API_URL = 'https://camaritabackend-production.up.railway.app/boxes';
+const API_URL = process.env.NEXT_PUBLIC_API_URL
+  ? `${process.env.NEXT_PUBLIC_API_URL}/boxes`
+  : 'http://localhost:8080/boxes'; // Fallback for local development
 
 export interface Box {
   id?: number;
