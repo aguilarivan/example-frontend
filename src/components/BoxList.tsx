@@ -1,6 +1,7 @@
 'use client';
 
 import { Box, deleteBox } from '@/lib/api';
+import { useState } from 'react';
 
 interface BoxListProps {
   boxes: Box[];
