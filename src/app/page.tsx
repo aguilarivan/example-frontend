@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { getAllBoxes, Box } from '@/lib/api';
-import BoxForm from '@/components/boxform';
-import BoxList from '@/components/boxlist';
+import BoxForm from '@/components/BoxForm';
+import BoxList from '@/components/BoxList';
 
 export default function Home() {
   const [boxes, setBoxes] = useState<Box[]>([]);
@@ -16,7 +16,7 @@ export default function Home() {
         const data = await getAllBoxes();
         setBoxes(data);
         setError(null);
-      } catch (err) {
+      } catch {
         setError('Failed to fetch boxes');
       }
     };

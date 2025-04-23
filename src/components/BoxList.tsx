@@ -1,7 +1,6 @@
 'use client';
 
 import { Box, deleteBox } from '@/lib/api';
-import { useState } from 'react';
 
 interface BoxListProps {
   boxes: Box[];
@@ -16,7 +15,7 @@ export default function BoxList({ boxes, onBoxDeleted }: BoxListProps) {
       await deleteBox(id);
       setError(null);
       onBoxDeleted(id);
-    } catch (err) {
+    } catch {
       setError('Failed to delete box');
     }
   };

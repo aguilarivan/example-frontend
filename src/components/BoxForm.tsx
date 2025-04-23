@@ -20,7 +20,7 @@ export default function BoxForm({ onBoxCreated }: BoxFormProps) {
       setColor('#000000');
       setError(null);
       onBoxCreated(newBox);
-    } catch (err) {
+    } catch {
       setError('Failed to create box');
     }
   };
