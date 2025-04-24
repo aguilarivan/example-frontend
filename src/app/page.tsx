@@ -2,15 +2,15 @@
 
 import { useRouter } from 'next/navigation';
 import {
-  Code,
   Database,
   Rocket,
   Settings,
-  GitFork,
-  ArrowRight,
-  Users, GithubIcon, BoxIcon
+  ArrowRight, GithubIcon, BoxIcon
 } from 'lucide-react';
-
+import { RiNextjsFill } from "react-icons/ri";
+import { SiSpring } from "react-icons/si";
+import { SiPostgresql } from "react-icons/si";
+import { SiRailway } from "react-icons/si";
 export default function MainPage() {
   const router = useRouter();
 
@@ -23,17 +23,17 @@ export default function MainPage() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <Feature icon={<Code className="w-6 h-6 text-blue-400" />} title="Frontend moderno">
+            <Feature icon={<RiNextjsFill className="w-8 h-8 text-white" />} title="Frontend Next.js 14">
               Next.js 14 con App Router y Tailwind CSS listo para producción.
             </Feature>
-            <Feature icon={<Settings className="w-6 h-6 text-yellow-400" />} title="Backend robusto">
+            <Feature icon={<SiSpring className="w-8 h-8 text-green-400" />} title="Backend Spring Boot 3.4.4">
               API REST con Spring Boot 3, JPA y estructura modular.
             </Feature>
-            <Feature icon={<Database className="w-6 h-6 text-green-400" />} title="Base de datos">
+            <Feature icon={<SiPostgresql className="w-8 h-8 text-blue-400" />} title="Base de datos">
               PostgreSQL como motor principal, con configuración lista para Docker.
             </Feature>
-            <Feature icon={<Rocket className="w-6 h-6 text-purple-400" />} title="Deploy sin drama">
-              Integrado con Railway (backend) y Vercel (frontend) desde el día uno.
+            <Feature icon={<SiRailway className="w-8 h-8 text-purple-400" />} title="Deploy railway">
+              Integrado con Railway (backend, base de datos y frontend) para un despliegue sencillo.
             </Feature>
           </div>
 
