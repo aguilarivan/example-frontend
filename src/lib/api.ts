@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const API_URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/boxes`
+console.log('NEXT_PUBLIC_BACKEND_URL:', process.env.NEXT_PUBLIC_BACKEND_URL);
 console.log('API_URL:', API_URL);
 // Ensure BACKEND_URL is set in your environment variables
 
