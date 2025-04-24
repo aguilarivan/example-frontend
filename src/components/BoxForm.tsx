@@ -26,10 +26,11 @@ export default function BoxForm({ onBoxCreated }: BoxFormProps) {
   };
 
   return (
-    <div className="mb-6">
+    <div className="mb-6 bg-gray-800  rounded-xl p-8 shadow-md">
       <h2 className="text-xl font-semibold mb-4">Add New Box</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
+      <form onSubmit={handleSubmit} className="space-y-4 ">
+        <div className={"flex space-x-4 justify-between "} >
+        <div className={"flex-col w-full"}>
           <label htmlFor="label" className="block text-sm font-medium">
             Label
           </label>
@@ -38,11 +39,11 @@ export default function BoxForm({ onBoxCreated }: BoxFormProps) {
             type="text"
             value={label}
             onChange={(e) => setLabel(e.target.value)}
-            className="mt-1 block w-full border rounded-md p-2"
+            className="mt-1 block w-full h-10 border border-gray-500 rounded-md p-2 mx-0"
             required
           />
         </div>
-        <div>
+        <div className={"flex-col w-50"}>
           <label htmlFor="color" className="block text-sm font-medium">
             Color
           </label>
@@ -51,9 +52,10 @@ export default function BoxForm({ onBoxCreated }: BoxFormProps) {
             type="color"
             value={color}
             onChange={(e) => setColor(e.target.value)}
-            className="mt-1 block w-16 h-10 border rounded-md"
+            className="mt-1 block w-full  h-10 border border-gray-500 rounded-md mx-0"
             required
           />
+        </div>
         </div>
         {error && <p className="text-red-500">{error}</p>}
         <button
@@ -62,6 +64,7 @@ export default function BoxForm({ onBoxCreated }: BoxFormProps) {
         >
           Create Box
         </button>
+
       </form>
     </div>
   );

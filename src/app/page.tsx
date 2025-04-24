@@ -1,44 +1,90 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { getAllBoxes, Box } from '@/lib/api';
-import BoxForm from '@/components/BoxForm';
-import BoxList from '@/components/BoxList';
+import { useRouter } from 'next/navigation';
+import {
+  Code,
+  Database,
+  Rocket,
+  Settings,
+  GitFork,
+  ArrowRight,
+  Users, GithubIcon, BoxIcon
+} from 'lucide-react';
 
-export default function Home() {
-  const [boxes, setBoxes] = useState<Box[]>([]);
-  const [error, setError] = useState<string | null>(null);
-
-  // Fetch boxes on mount
-  useEffect(() => {
-    const fetchBoxes = async () => {
-      try {
-        const data = await getAllBoxes();
-        setBoxes(data);
-        setError(null);
-      } catch {
-        setError('Failed to fetch boxes');
-      }
-    };
-    fetchBoxes();
-  }, []);
-
-  // Handle box creation
-  const handleBoxCreated = (newBox: Box) => {
-    setBoxes((prev) => [...prev, newBox]);
-  };
-
-  // Handle box deletion
-  const handleBoxDeleted = (id: number) => {
-    setBoxes((prev) => prev.filter((box) => box.id !== id));
-  };
+export default function MainPage() {
+  const router = useRouter();
 
   return (
-    <main className="max-w-4xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">Box CRUD App</h1>
-      {error && <p className="text-red-500 mb-4">{error}</p>}
-      <BoxForm onBoxCreated={handleBoxCreated} />
-      <BoxList boxes={boxes} onBoxDeleted={handleBoxDeleted} />
-    </main>
+      <div className="max-w-5xl mx-auto px-6 py-10">
+        <div className="bg-gray-900 rounded-2xl shadow-xl p-10">
+          <h1 className="text-4xl font-bold text-white mb-4">🚀 Starter Pack: Next.js + Spring Boot</h1>
+          <p className="text-gray-300 text-lg mb-6">
+            Este proyecto es un <strong>boilerplate full stack</strong> desarrollado por el equipo de <span className="text-blue-400 font-semibold">GauLab</span>. Ideal para crear apps modernas rápidamente con tecnologías robustas y escalables.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <Feature icon={<Code className="w-6 h-6 text-blue-400" />} title="Frontend moderno">
+              Next.js 14 con App Router y Tailwind CSS listo para producción.
+            </Feature>
+            <Feature icon={<Settings className="w-6 h-6 text-yellow-400" />} title="Backend robusto">
+              API REST con Spring Boot 3, JPA y estructura modular.
+            </Feature>
+            <Feature icon={<Database className="w-6 h-6 text-green-400" />} title="Base de datos">
+              PostgreSQL como motor principal, con configuración lista para Docker.
+            </Feature>
+            <Feature icon={<Rocket className="w-6 h-6 text-purple-400" />} title="Deploy sin drama">
+              Integrado con Railway (backend) y Vercel (frontend) desde el día uno.
+            </Feature>
+          </div>
+
+          <div className="mb-8">
+            <h2 className="text-xl text-white font-semibold mb-2 flex items-center gap-2">
+              <GithubIcon className="w-5 h-5" />
+              Repositorios
+            </h2>
+            <ul className="list-disc list-inside text-blue-400 space-y-1">
+              <li>
+                <a href="https://github.com/Gaulab/example-frontend" target="_blank" className="hover:underline">
+                  Frontend – Next.js
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/Gaulab/example-backend" target="_blank" className="hover:underline">
+                  Backend – Spring Boot
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <button
+              onClick={() => router.push('/BoxApp')}
+              className="flex items-center gap-2 bg-blue-600 text-white px-5 py-3 rounded-xl hover:bg-blue-700 transition"
+          >
+            <BoxIcon className="w-5 h-5" />
+            Ver ejemplo de CRUD
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+  );
+}
+
+function Feature({
+                   icon,
+                   title,
+                   children,
+                 }: {
+  icon: React.ReactNode;
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+      <div className="bg-gray-800 rounded-xl p-5 flex items-start space-x-4 shadow-sm">
+        <div className="mt-1">{icon}</div>
+        <div>
+          <h3 className="text-white font-semibold">{title}</h3>
+          <p className="text-gray-400 text-sm">{children}</p>
+        </div>
+      </div>
   );
 }
