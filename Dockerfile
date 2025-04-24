@@ -1,6 +1,10 @@
 # Use the official Node.js image
 FROM node:18-alpine
 
+# Define ARGs para las variables públicas
+ARG NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+
 # Set working directory
 WORKDIR /app
 
@@ -13,7 +17,7 @@ RUN npm install
 # Copy the rest of the application
 COPY . .
 
-# Build the Next.js app
+# Build the Next.js app (usará las env que definiste arriba)
 RUN npm run build
 
 # Expose the port the app runs on
