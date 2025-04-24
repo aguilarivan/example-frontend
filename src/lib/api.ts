@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = `http://${process.env.NEXT_PUBLIC_API_URL}/boxes`;
+const API_URL = `https://${process.env.NEXT_PUBLIC_API_URL}/boxes`;
 
 export interface Box {
   id?: number;
