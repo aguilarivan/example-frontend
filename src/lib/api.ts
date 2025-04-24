@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = `http://example-backend.railway.internal/boxes`
+const API_URL = `https://example-backend.railway.internal/boxes`
 
 export interface Box {
   id?: number;
