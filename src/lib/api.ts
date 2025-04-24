@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const API_URL = `https://example-backend.railway.internal:8080/boxes`
+const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/boxes`
+console.log('NEXT_PUBLIC_API_URL:', process.env.NEXT_PUBLIC_API_URL);
+
 
 export interface Box {
   id?: number;
